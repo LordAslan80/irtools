@@ -9,13 +9,13 @@ class Numbers:
         self._value = value
         self._option = option
 
-        if self._option == "ef":
-            self.run = self._convert_english_digit_to_farsi_digit()
-        elif self._option == "fe":
-            self.run = self._convert_farsi_digit_to_english_digit()
+        self.run = self._digit_converter()
 
-    def _convert_english_digit_to_farsi_digit(self):
-        return self._value.translate(self._farsi_translation_table)
-
-    def _convert_farsi_digit_to_english_digit(self):
-        return self._value.translate(self._english_translation_table)
+    def _digit_converter(self):
+        match self._option:
+            case "ef":
+                return self._value.translate(self._farsi_translation_table)
+            case "fe":
+                return self._value.translate(self._english_translation_table)
+            case _:
+                return False

@@ -35,5 +35,6 @@ def num(value, option="ef"):
 
     Returns:
         string: return input string with replaced digits
+        False: if any errors occur
     """
     return Numbers(value, option).run
