@@ -9,7 +9,7 @@ class NationalCode:
 
         if self._option == "v":
             self.run = self._validate()
-        elif self._option == "c":
+        elif self._option.startswith("c"):
             self.run = self._city()
 
     def _validate(self):
@@ -37,6 +37,14 @@ class NationalCode:
 
             search = self._value[:3]
             if search in data:
-                return f"استان {data[search].get('province')} - شهر {data[search].get('city')}"
+                match self._option:
+                    case "c":
+                        return f"استان {data[search].get('province')} ، شهر {data[search].get('city')}"
+                    case "cc":
+                        return data[search].get("city")
+                    case "cp":
+                        return data[search].get("province")
+                    case _:
+                        return False
             return False
         return False

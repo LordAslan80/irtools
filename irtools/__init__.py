@@ -48,7 +48,9 @@ def national_code(value, option="v"):
         value (str): person input national code
         option (str, optional): only accepts v, c
             v (default) -> validate national code
-            c -> return born city
+            c -> return born city and province
+            cc -> return born city
+            cp -> return born province
 
     Returns:
         False: if any error occurs or validation fails or city doesn't exist
