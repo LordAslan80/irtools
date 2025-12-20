@@ -1,5 +1,6 @@
 from .tools.tel import Tel
 from .tools.digits import Digits
+from .tools.national_code import NationalCode
 
 
 def tel(value, option="v"):
@@ -38,3 +39,20 @@ def digits(value, option="ef"):
         False: if any errors occur
     """
     return Digits(value, option).run
+
+
+def national_code(value, option="v"):
+    """validate national code
+
+    Args:
+        value (str): person input national code
+        option (str, optional): only accepts v, c
+            v (default) -> validate national code
+            c -> return born city
+
+    Returns:
+        False: if any error occurs or validation fails or city doesn't exist
+        True: if national code is valid
+        string: city name
+    """
+    return NationalCode(value, option).run
