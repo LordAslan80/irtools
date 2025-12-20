@@ -1,4 +1,4 @@
-class Numbers:
+class Digits:
     _english_digits = "0123456789"
     _farsi_digits = "۰۱۲۳۴۵۶۷۸۹"
 

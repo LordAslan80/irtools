@@ -1,5 +1,5 @@
 from .tools.tel import Tel
-from .tools.utils import Numbers
+from .tools.digits import Digits
 
 
 def tel(value, option="v"):
@@ -24,7 +24,7 @@ def tel(value, option="v"):
     return Tel(value, option).run
 
 
-def num(value, option="ef"):
+def digits(value, option="ef"):
     """convert english digits to farsi digits and reverse
 
     Args:
@@ -37,4 +37,4 @@ def num(value, option="ef"):
         string: return input string with replaced digits
         False: if any errors occur
     """
-    return Numbers(value, option).run
+    return Digits(value, option).run
