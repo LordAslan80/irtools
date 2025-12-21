@@ -46,7 +46,7 @@ def national_code(value, option="v"):
 
     Args:
         value (str): person input national code
-        option (str, optional): only accepts v, c
+        option (str, optional): only accepts v, c, cc, cp
             v (default) -> validate national code
             c -> return born city and province
             cc -> return born city
