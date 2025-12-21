@@ -16,7 +16,7 @@ class NationalCode:
         if len(self._value) == 10 and self._value.isdigit():
             result = 0
             for index, item in enumerate(self._value[:9]):
-                result += (11 - (index + 1)) * int(item)
+                result += (10 - index) * int(item)
 
             result = result % 11
 
