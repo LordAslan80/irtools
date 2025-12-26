@@ -3,14 +3,16 @@ import json
 
 
 class NationalCode:
+    _get_types = ("pc", "c", "p")
+
     def __init__(self, value: str, option: str):
         self._value = value
         self._option = option
 
         if self._option == "v":
             self.run = self._validate()
-        elif self._option.startswith("c"):
-            self.run = self._city()
+        elif self._option in self._get_types:
+            self.run = self._get_province_and_city()
 
     def _validate(self):
         if len(self._value) == 10 and self._value.isdigit():
@@ -26,7 +28,7 @@ class NationalCode:
                 return True if int(self._value[9]) == (11 - result) else False
         return False
 
-    def _city(self):
+    def _get_province_and_city(self):
         validation = self._validate()
         if validation:
             current_dir = os.path.dirname(__file__)
@@ -38,11 +40,11 @@ class NationalCode:
             search = self._value[:3]
             if search in data:
                 match self._option:
-                    case "c":
+                    case "pc":
                         return f"استان {data[search].get('province')} ، شهر {data[search].get('city')}"
-                    case "cc":
+                    case "c":
                         return data[search].get("city")
-                    case "cp":
+                    case "p":
                         return data[search].get("province")
                     case _:
                         return False

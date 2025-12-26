@@ -9,16 +9,16 @@ class TestNationalCode(TestCase):
 
     def test_city_c(self):
         self.assertEqual(
-            national_code("1080576290", "c"), "استان اصفهان ، شهر نجف آباد"
+            national_code("1080576290", "pc"), "استان اصفهان ، شهر نجف آباد"
         )
         self.assertEqual(
-            national_code("1175411299", "c"), "استان اصفهان ، شهر لنجان(زرینشهر)"
+            national_code("1175411299", "pc"), "استان اصفهان ، شهر لنجان(زرینشهر)"
         )
 
     def test_city_cc(self):
-        self.assertEqual(national_code("1080576290", "cc"), "نجف آباد")
-        self.assertEqual(national_code("1175411299", "cc"), "لنجان(زرینشهر)")
+        self.assertEqual(national_code("1080576290", "c"), "نجف آباد")
+        self.assertEqual(national_code("1175411299", "c"), "لنجان(زرینشهر)")
 
     def test_city_cp(self):
-        self.assertEqual(national_code("1080576290", "cp"), "اصفهان")
-        self.assertEqual(national_code("1175411299", "cp"), "اصفهان")
+        self.assertEqual(national_code("1080576290", "p"), "اصفهان")
+        self.assertEqual(national_code("1175411299", "p"), "اصفهان")
