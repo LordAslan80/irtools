@@ -27,9 +27,9 @@ class NationalCode:
     def _get_province_and_city(self):
         validation = self._validate()
         if validation:
-            from .cities_list import cities_list
+            from .constant_datas import CITIES_LIST
 
-            search = cities_list.get(self._value[:3])
+            search = CITIES_LIST.get(self._value[:3])
             if search is not None:
                 match self._option:
                     case "pc":
