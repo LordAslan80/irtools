@@ -1,7 +1,3 @@
-import os
-import json
-
-
 class NationalCode:
     _get_types = ("pc", "c", "p")
 
@@ -31,21 +27,17 @@ class NationalCode:
     def _get_province_and_city(self):
         validation = self._validate()
         if validation:
-            current_dir = os.path.dirname(__file__)
-            file_path = os.path.join(current_dir, "cities_list.json")
+            from .cities_list import cities_list
 
-            with open(file_path, "r", encoding="utf-8") as file:
-                data = json.load(file)
-
-            search = self._value[:3]
-            if search in data:
+            search = cities_list.get(self._value[:3])
+            if search is not None:
                 match self._option:
                     case "pc":
-                        return f"استان {data[search].get('province')} ، شهر {data[search].get('city')}"
+                        return f"استان {search['province']} ، شهر {search['city']}"
                     case "c":
-                        return data[search].get("city")
+                        return search["city"]
                     case "p":
-                        return data[search].get("province")
+                        return search["province"]
                     case _:
                         return False
             return False

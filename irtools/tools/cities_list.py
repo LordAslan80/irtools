@@ -1,4 +1,4 @@
-{
+cities_list: dict = {
     "169": {
         "province": "آذربایجان شرقی",
         "city": "آذرشهر"
