@@ -33,11 +33,11 @@ class NationalCode:
             if search is not None:
                 match self._option:
                     case "pc":
-                        return f"استان {search['province']} ، شهر {search['city']}"
+                        return f"استان {search[0]} ، شهر {search[1]}"
                     case "c":
-                        return search["city"]
+                        return search[1]
                     case "p":
-                        return search["province"]
+                        return search[0]
                     case _:
                         return False
             return False
