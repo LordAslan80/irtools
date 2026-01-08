@@ -11,6 +11,8 @@ class Digits:
 
         if self._option == "cw":
             self.run = self._currency()
+        elif self._option == "s":
+            self.run = self._separate()
         else:
             self.run = self._digit_converter()
 
@@ -23,15 +25,29 @@ class Digits:
             case _:
                 return False
 
+    def _separate(self):
+        if self._value.isdigit():
+            data = [
+                self._value[::-1][i : i + 3][::-1]
+                for i in range(0, len(self._value), 3)
+            ]
+            match self._option:
+                case "s":
+                    return ",".join(reversed(data))
+                case "fe":
+                    return data
+                case _:
+                    return False
+        return False
+
     def _currency(self):
         if self._value.isdigit():
             self._option = "fe"
-            data = self._digit_converter()
+            self._value = self._digit_converter()
+            data = self._separate()
             output = []
 
             if data:
-                data = [data[::-1][i : i + 3][::-1] for i in range(0, len(data), 3)]
-
                 for index, item in enumerate(data):
                     if item != "000":
                         result = self._words(item)
