@@ -24,19 +24,21 @@ class Digits:
                 return False
 
     def _currency(self):
-        self._option = "fe"
-        data = self._digit_converter()
-        output = []
+        if self._value.isdigit():
+            self._option = "fe"
+            data = self._digit_converter()
+            output = []
 
-        if data:
-            data = [data[::-1][i : i + 3][::-1] for i in range(0, len(data), 3)]
+            if data:
+                data = [data[::-1][i : i + 3][::-1] for i in range(0, len(data), 3)]
 
-            for index, item in enumerate(data):
-                if item != "000":
-                    result = self._words(item)
-                    output.append(f"{result}{NUM_WORDS["UNITS"][index]}")
+                for index, item in enumerate(data):
+                    if item != "000":
+                        result = self._words(item)
+                        output.append(f"{result}{NUM_WORDS["UNITS"][index]}")
 
-            return " و ".join(reversed(output))
+                return " و ".join(reversed(output))
+            return False
         return False
 
     def _words(self, value):
