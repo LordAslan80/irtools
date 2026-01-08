@@ -24,6 +24,10 @@ class Testdigits(TestCase):
         self.assertEqual(digits("dr۴۶۰nized", "fe"), "dr460nized")
         self.assertEqual(digits("سل۱م د۹ست من", "fe"), "سل1م د9ست من")
 
+    def test_separate(self):
+        self.assertEqual(digits("1234567890", "s"), "1,234,567,890")
+        self.assertEqual(digits("۹۸۷۶۵۴۳۲۱۰", "s"), "۹,۸۷۶,۵۴۳,۲۱۰")
+
     def test_currency_words_less_than_10(self):
         self.assertEqual(digits("7", "cw"), "هفت")
 
