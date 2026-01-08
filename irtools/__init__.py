@@ -30,9 +30,10 @@ def digits(value, option="ef"):
 
     Args:
         value (str): your input string
-        option (str): only accepts ef, fe
+        option (str): only accepts ef, fe, cw
             ef (default) -> convert english digits to farsi digits
             fe -> convert farsi digits to english digits
+            cw -> convert digits to persian currency words
 
     Returns:
         string: return input string with replaced digits
